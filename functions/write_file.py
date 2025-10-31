@@ -3,7 +3,7 @@ from google.genai import types
 
 schema_write_file = types.FunctionDeclaration(
     name="write_file",
-    description="Writes text content to a file located within a predefined working directory. Automatically creates any missing subdirectories.",
+    description="Writes text content to a file located within a predefined working directory. Automatically creates te file or any missing subdirectories.",
     parameters=types.Schema(
         type=types.Type.OBJECT,
         properties={

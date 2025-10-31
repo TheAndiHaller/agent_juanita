@@ -4,7 +4,7 @@ from google.genai import types
 
 schema_get_file_content = types.FunctionDeclaration(
     name="get_file_content",
-    description="Returns the content of a file.",
+    description=f"Reads and returns the first {MAX_CHARS} characters of the content from a specified file within the working directory.",
     parameters=types.Schema(
         type=types.Type.OBJECT,
         properties={
@@ -13,6 +13,7 @@ schema_get_file_content = types.FunctionDeclaration(
                 description="The path of the file to be read. The path is always relative to the working directory.",
             ),
         },
+        required=["file_path"],
     ),
 )
 

@@ -4,7 +4,7 @@ from google.genai import types
 
 schema_run_python_file = types.FunctionDeclaration(
     name="run_python_file",
-    description="Executes a Python file within a predefined working directory. Optionally accepts command-line arguments.",
+    description="Executes a Python file within a predefined working directory and returns the output from the interpreter. Optionally accepts command-line arguments.",
     parameters=types.Schema(
         type=types.Type.OBJECT,
         properties={
