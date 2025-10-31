@@ -3,8 +3,8 @@ import sys
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-from functions.get_files_info import schema_get_files_info
 
+from call_function import available_functions
 
 def main():
     load_dotenv()
@@ -29,13 +29,6 @@ def main():
         types.Content(role="user", parts=[types.Part(text=user_prompt)]),
     ]
 
-    # Funtion list / Tools
-    available_functions = types.Tool(
-        function_declarations=[
-            schema_get_files_info,
-        ]
-    )
-
     # System prompt
     system_prompt = """
     You are a helpful AI coding agent.
@@ -43,6 +36,9 @@ def main():
     When a user asks a question or makes a request, make a function call plan. You can perform the following operations:
 
     - List files and directories
+    - Read file contents
+    - Execute Python files with optional arguments
+    - Write or overwrite files
 
     All paths you provide should be relative to the working directory. You do not need to specify the working directory in your function calls as it is automatically injected for security reasons.
     """
